@@ -16,6 +16,7 @@ export const Route = createRootRoute({
       { name: "description", content: "Create a professional invoice PDF in your browser. No upload, no signup, no watermark." },
       { name: "theme-color", content: "#f3efe8" },
       { name: "google-adsense-account", content: "ca-pub-7636435144500691" },
+      { name: "google-site-verification", content: "5OTsY7a0gtx0O1M4fKfIk71K1Q1711AAmCljFL5HZMw" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
