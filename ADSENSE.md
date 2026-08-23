@@ -3,8 +3,10 @@
 **Дата:** 22.08.2026  
 **Аккаунт:** `ca-pub-7636435144500691`  
 **Сайты сейчас:**  
-- `folio-pdf-toolkit.vercel.app` — ownership OK, **на проверке**  
-- `heic-local.vercel.app` — ownership OK, **на проверке**  
+- `heic-local.vercel.app` — ownership OK, **на проверке / Подготовка**  
+- `folio-pdf-toolkit.vercel.app` — ownership OK, **на проверке / Подготовка**  
+- `nota-invoice-mu.vercel.app` — Nota (invoice), 3 способа live, **Требует проверки** → Request review  
+**Не использовать:** `nota-invoice.vercel.app` (чужой), `folio-invoice.vercel.app` (paused, неверное имя)  
 **Код:** ADS-OS · канон после live-скринов AdSense UI
 
 Этот файл — память проекта по монетизации. Связан с 95 Policy, 97 Placement, 98 Playbook, 119 Machine.
@@ -203,7 +205,8 @@ google.com, pub-7636435144500691, DIRECT, f08c47fec0942fa0
 - Дублировать adsbygoogle.js
 
 **Делать**
-- Ждать Ready по HEIC + Folio
-- Завести Search Console + sitemap (трафик из Google)
-- Готовить третий Free App = **Invoice Generator** (спека + промпты)
+- Ждать Ready (Подготовка → Готово) по HEIC + Folio + Nota
+- Nota: в кабинете **Запросить проверку** для `nota-invoice-mu.vercel.app`
+- Статусы сайта и ads.txt — канон `00_ADSENSE_SITE_AND_ADSTXT_STATUS_CANON_RU.md`
+- Search Console + sitemap после ownership (трафик из Google)
 - CMP, если ещё не создан на аккаунте
