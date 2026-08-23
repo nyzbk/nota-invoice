@@ -23,7 +23,7 @@ export function AppErrorComponent({ error }: ErrorComponentProps) {
           href="/"
           className="inline-flex min-h-11 items-center justify-center rounded-md bg-copper px-5 text-sm font-medium text-copper-fg no-underline"
         >
-          Back to tools
+          Back to invoice
         </a>
         <button
           type="button"
@@ -41,12 +41,12 @@ export function AppNotFound() {
   return (
     <main className="flex min-h-dvh flex-col items-center justify-center gap-4 bg-paper px-6 text-center text-ink">
       <h1 className="font-display text-2xl font-medium tracking-tight">Page not found</h1>
-      <p className="max-w-md text-sm text-muted">That link doesn’t exist. Merge, Split and Compress are on the main tools.</p>
+      <p className="max-w-md text-sm text-muted">That page does not exist. The invoice form is on the home screen.</p>
       <a
         href="/"
         className="inline-flex min-h-11 items-center justify-center rounded-md bg-copper px-5 text-sm font-medium text-copper-fg no-underline"
       >
-        Back to tools
+        Back to invoice
       </a>
     </main>
   );

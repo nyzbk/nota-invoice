@@ -7,7 +7,7 @@ import { FaqSection } from "@/components/site/FaqSection";
 import { HowItWorks } from "@/components/site/HowItWorks";
 import { Button } from "@/components/ui/button";
 import { invoiceFaq } from "@/content/faq";
-import { buildInvoicePdf, validateInvoice } from "@/lib/invoice/pdf";
+import { assertSafeLogo, buildInvoicePdf, validateInvoice } from "@/lib/invoice/pdf";
 import { clearDraft, loadDraft, saveDraft } from "@/lib/invoice/storage";
 import {
   CURRENCIES,
@@ -94,6 +94,17 @@ export function InvoiceApp() {
     setLogo(null);
     setDone(false);
     setError(null);
+  }
+
+  if (!hydrated) {
+    return (
+      <main className="mx-auto w-full max-w-5xl px-4 py-8">
+        <h1 className="font-display text-[1.75rem] font-medium leading-tight tracking-tight sm:text-4xl">
+          Create a free invoice PDF online
+        </h1>
+        <p className="mt-3 text-sm text-muted">Loading…</p>
+      </main>
+    );
   }
 
   return (
@@ -209,6 +220,13 @@ export function InvoiceApp() {
               onChange={async (e) => {
                 const file = e.target.files?.[0];
                 if (!file) {
+                  setLogo(null);
+                  return;
+                }
+                const problem = assertSafeLogo(file);
+                if (problem) {
+                  setError(problem);
+                  e.target.value = "";
                   setLogo(null);
                   return;
                 }
