@@ -1,6 +1,6 @@
 import { defaultInvoice, type Invoice } from "./types";
 
-const KEY = "folio-invoice-draft-v1";
+const KEY = "nota-invoice-draft-v1";
 
 export function loadDraft(): Invoice | null {
   if (typeof window === "undefined") return null;

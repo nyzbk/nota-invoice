@@ -126,7 +126,7 @@ export async function buildInvoicePdf(invoice: Invoice, logoBytes?: ArrayBuffer 
     });
   }
 
-  page.drawText("Created with Folio Invoice", {
+  page.drawText("Created with Nota", {
     x: MARGIN,
     y: 36,
     size: 8,

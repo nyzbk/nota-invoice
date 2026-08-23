@@ -4,8 +4,8 @@ import { AppShell } from "@/components/layout/AppShell";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy — Folio Invoice" },
-      { name: "description", content: "Folio Invoice builds PDFs in your browser. Invoice data is not uploaded." },
+      { title: "Privacy Policy — Nota" },
+      { name: "description", content: "Nota builds invoice PDFs in your browser. Invoice data is not uploaded." },
     ],
   }),
   component: PrivacyPage,
@@ -19,7 +19,7 @@ function PrivacyPage() {
         <p className="mt-2 text-sm text-muted">Last updated: 23 August 2026</p>
         <div className="mt-8 space-y-6 text-sm leading-relaxed text-ink/90">
           <p>
-            Folio Invoice creates PDF invoices in your browser. We do not upload, store or read the
+            Nota creates PDF invoices in your browser. We do not upload, store or read the
             contents of your invoices.
           </p>
           <h2 className="font-display text-xl font-medium">What stays on your device</h2>

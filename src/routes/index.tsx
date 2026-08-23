@@ -19,7 +19,7 @@ export const Route = createFileRoute("/")({
       title: TITLE,
       description: DESC,
       path: "/",
-      appName: "Free Invoice Generator",
+      appName: "Nota",
       faqs: invoiceFaq,
       howToName: "How to create an invoice PDF online",
       howToSteps: STEPS,

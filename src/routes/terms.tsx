@@ -3,7 +3,7 @@ import { AppShell } from "@/components/layout/AppShell";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
-    meta: [{ title: "Terms of Service — Folio Invoice" }],
+    meta: [{ title: "Terms of Service — Nota" }],
   }),
   component: TermsPage,
 });
@@ -15,7 +15,7 @@ function TermsPage() {
         <h1 className="font-display text-3xl font-medium tracking-tight">Terms of Service</h1>
         <p className="mt-2 text-sm text-muted">Last updated: 23 August 2026</p>
         <div className="mt-8 space-y-6 text-sm leading-relaxed text-ink/90">
-          <p>By using Folio Invoice you agree to these Terms and the Privacy Policy.</p>
+          <p>By using Nota you agree to these Terms and the Privacy Policy.</p>
           <p>
             The generator is provided “as is”. You are responsible for whether an invoice meets the
             legal or tax rules that apply to you. This is not accounting or legal advice.

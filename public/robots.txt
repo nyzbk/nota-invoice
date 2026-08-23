@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://folio-invoice.vercel.app/sitemap.xml
+Sitemap: https://nota-invoice.vercel.app/sitemap.xml

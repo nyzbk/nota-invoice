@@ -65,7 +65,7 @@ export function InvoiceApp() {
   };
 
   const filename = useMemo(
-    () => stampFilename(invoice.number || "invoice", "folio", "pdf"),
+    () => stampFilename(invoice.number || "invoice", "nota", "pdf"),
     [invoice.number],
   );
 
@@ -254,7 +254,7 @@ export function InvoiceApp() {
       <section className="mt-14">
         <h2 className="font-display text-2xl font-medium tracking-tight">Why generate invoices here</h2>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Most invoice tools want an account before you can download. Folio builds the PDF in the
+          Most invoice tools want an account before you can download. Nota builds the PDF in the
           browser so freelancer and small-business invoices stay private. Edit, download, done.
         </p>
       </section>

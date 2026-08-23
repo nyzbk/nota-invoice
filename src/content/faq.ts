@@ -3,7 +3,7 @@ import type { FaqItem } from "@/components/site/FaqSection";
 export const invoiceFaq: FaqItem[] = [
   {
     q: "What should be on an invoice?",
-    a: "Your details, the client’s details, a unique invoice number, issue and due dates, line items with quantities and prices, tax if you charge it, the total, and payment notes. Folio fills that layout for you.",
+    a: "Your details, the client’s details, a unique invoice number, issue and due dates, line items with quantities and prices, tax if you charge it, the total, and payment notes. Nota fills that layout for you.",
   },
   {
     q: "Is this invoice generator free?",
@@ -31,7 +31,7 @@ export const invoiceFaq: FaqItem[] = [
   },
   {
     q: "Will the PDF have a watermark?",
-    a: "No. A tiny “Created with Folio Invoice” line sits in the footer only — it does not stamp over your totals.",
+    a: "No. A tiny “Created with Nota” line sits in the footer only — it does not stamp over your totals.",
   },
   {
     q: "Does it work on iPhone?",
@@ -39,6 +39,6 @@ export const invoiceFaq: FaqItem[] = [
   },
   {
     q: "Is this legal advice or an official tax form?",
-    a: "No. You are responsible for required fields in your country. Folio is a layout tool, not an accountant.",
+    a: "No. You are responsible for required fields in your country. Nota is a layout tool, not an accountant.",
   },
 ];

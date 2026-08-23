@@ -4,7 +4,7 @@ import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { AppErrorComponent } from "@/lib/error-component";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "Folio — Free Invoice Generator";
+const APP_NAME = "Nota — Free Invoice Generator";
 
 export const Route = createRootRoute({
   errorComponent: AppErrorComponent,
