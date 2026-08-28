@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/components/site/FaqSection";
+import { SITE_ORIGIN } from "@/content/site";
 
 export function jsonLdScripts(opts: {
   appName: string;
@@ -8,8 +9,7 @@ export function jsonLdScripts(opts: {
   howToName: string;
   howToSteps: string[];
 }) {
-  const origin = typeof window === "undefined" ? "" : window.location.origin;
-  const url = `${origin}${opts.path}`;
+  const url = `${SITE_ORIGIN}${opts.path === "/" ? "" : opts.path}`;
   const app = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -17,10 +17,9 @@ export function jsonLdScripts(opts: {
     url,
     applicationCategory: "BusinessApplication",
     operatingSystem: "Any",
-    browserRequirements: "Requires JavaScript",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     description: opts.description,
-    featureList: ["Create invoice", "Download PDF", "No signup", "No watermark", "Works offline in the browser"],
+    featureList: ["Create invoice", "Download PDF", "No signup", "No watermark", "Client-side PDF"],
   };
   const faq = {
     "@context": "https://schema.org",
@@ -54,17 +53,29 @@ export function toolHead(opts: {
   description: string;
   path: string;
   appName: string;
-  faqs: FaqItem[];
-  howToName: string;
-  howToSteps: string[];
+  faqs?: FaqItem[];
+  howToName?: string;
+  howToSteps?: string[];
 }) {
+  const canonical = `${SITE_ORIGIN}${opts.path === "/" ? "" : opts.path}`;
+  const scripts =
+    opts.faqs && opts.howToName && opts.howToSteps
+      ? jsonLdScripts({
+          appName: opts.appName,
+          path: opts.path,
+          description: opts.description,
+          faqs: opts.faqs,
+          howToName: opts.howToName,
+          howToSteps: opts.howToSteps,
+        })
+      : [];
   return {
     meta: [
       { title: opts.title },
       { name: "description", content: opts.description },
       { name: "robots", content: "index, follow, max-image-preview:large" },
     ],
-    links: [{ rel: "canonical", href: opts.path }],
-    scripts: jsonLdScripts(opts),
+    links: [{ rel: "canonical", href: canonical }],
+    scripts,
   };
 }

@@ -41,7 +41,7 @@ const pageErrors = [];
 page.on("pageerror", (e) => pageErrors.push(e.message));
 
 async function visit(path) {
-  const res = await page.goto(`${BASE}${path}`, { waitUntil: "networkidle", timeout: 30000 });
+  const res = await page.goto(`${BASE}${path}`, { waitUntil: "domcontentloaded", timeout: 30000 });
   if (!res || res.status() >= 400) fail.push(`${path} status ${res?.status()}`);
   else ok.push(`${path} ${res.status()}`);
 }
@@ -50,6 +50,9 @@ await visit("/");
 await visit("/privacy");
 await visit("/terms");
 await visit("/about");
+await visit("/contact");
+await visit("/how-to");
+await visit("/faq");
 await visit("/ads.txt");
 
 const ads = await (await page.goto(`${BASE}/ads.txt`)).text();
@@ -58,7 +61,7 @@ else ok.push("ads.txt pub");
 
 await visit("/");
 await page.evaluate(() => localStorage.clear());
-await page.reload({ waitUntil: "networkidle" });
+await page.reload({ waitUntil: "domcontentloaded" });
 await page.getByRole("button", { name: "Download PDF" }).waitFor({ timeout: 10000 });
 const h1 = await page.locator("h1").innerText();
 if (!/invoice/i.test(h1)) fail.push(`unexpected h1: ${h1}`);
@@ -92,7 +95,7 @@ if (pdf.getPageCount() < 1) fail.push("no pages");
 else ok.push(`${pdf.getPageCount()} page`);
 
 const decoded = hexToAscii(streamText(bytes));
-const preview = await page.locator("article").innerText();
+const preview = await page.locator("article").first().innerText();
 if (!preview.includes("3,248.00") && !preview.includes("$3248")) {
   if (!preview.includes("3,248")) fail.push(`preview totals missing: ${preview.slice(-200)}`);
   else ok.push("preview total 3,248");

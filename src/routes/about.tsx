@@ -1,44 +1,71 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { AppShell } from "@/components/layout/AppShell";
+import { Page } from "@/components/site/Page";
+import { CONTACT_EMAIL } from "@/content/site";
+import { toolHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [{ title: "About — Nota" }],
-  }),
+  head: () =>
+    toolHead({
+      title: "About Nota — local-first invoice PDF",
+      description:
+        "Nota is a browser invoice generator: A4 PDF, integer-cent math, Noto Sans for Latin and Cyrillic. No accounts, no cloud invoice store, no watermark.",
+      path: "/about",
+      appName: "Nota",
+    }),
   component: AboutPage,
 });
 
 function AboutPage() {
   return (
-    <AppShell>
-      <main className="mx-auto max-w-2xl px-4 py-10">
-        <h1 className="font-display text-3xl font-medium tracking-tight">About this free tool</h1>
-        <div className="mt-8 space-y-5 text-sm leading-relaxed text-ink/90">
-          <p>
-            Nota is a free invoice PDF generator that runs in your browser. No account, no
-            watermark, no upload.
-          </p>
-          <p>Other free tools from the same workshop:</p>
-          <ul className="list-disc space-y-1 pl-5">
-            <li>
-              <a className="underline decoration-line underline-offset-4" href="https://folio-pdf-toolkit.vercel.app">
-                Folio — PDF Toolkit
-              </a>{" "}
-              — merge, split, compress
-            </li>
-            <li>
-              <a className="underline decoration-line underline-offset-4" href="https://heic-local.vercel.app">
-                HEIC Local
-              </a>{" "}
-              — convert iPhone photos on-device
-            </li>
-          </ul>
-          <p>
-            Built as a public utility alongside $10k websites, brand identity systems and custom web
-            applications.
-          </p>
-        </div>
-      </main>
-    </AppShell>
+    <Page
+      title="About Nota"
+      lede="Local-first means the bill is built where you type it. That is a product choice, not a slogan."
+    >
+      <p>
+        Most “free invoice” pages are a funnel into a monthly plan. The PDF is the bait. We
+        already run paid work (brand systems, $10k websites, custom apps). Nota exists so a
+        freelancer can leave with a file without becoming a lead.
+      </p>
+      <p>
+        This site does one job: turn From, Bill to, dates, line items, a flat discount and a tax
+        percent into a single A4 PDF. The library is pdf-lib. Fonts are Noto Sans so a Kazakh or
+        Russian legal name does not crash Helvetica. Money is integer cents. Logo is optional PNG
+        or JPEG with a 2 MB cap and magic-byte check. If a line would run off the page, we stop
+        and say so instead of inventing a second sheet of empty letterhead.
+      </p>
+      <p>
+        Local-first is the same reason people still keep a paper copy: once the file is on their
+        disk, a vendor outage does not lock the bill. The cost is that we cannot “restore your
+        last ten invoices” from a dashboard. Keep the PDFs you send. If that sounds like too much
+        work, a hosted suite is a better fit — we would rather say that than pretend Nota is
+        QuickBooks.
+      </p>
+      <p>
+        We do not create accounts. We do not upload invoices. We do not keep a customer book. We
+        do not email PDFs. We do not watermark the total. We do not sell invoice contents. Hosting
+        logs (IP, user-agent, referrer) may exist for security, like any public site — that is
+        not a copy of your bill.
+      </p>
+      <p>
+        Ads, when Google marks the site Ready, sit after a successful download, mid-page and in
+        the footer. Until then the slots are labelled placeholders. Auto ads overlays stay off so
+        they cannot cover Download PDF. We will not ask you to click an ad.
+      </p>
+      <p>
+        Operator mailbox:{" "}
+        <a className="underline underline-offset-4" href={`mailto:${CONTACT_EMAIL}`}>
+          {CONTACT_EMAIL}
+        </a>
+        . Same address as on <a href="/contact">Contact</a>. Do not send files there.
+      </p>
+      <p>
+        One neighbouring tool:{" "}
+        <a className="underline underline-offset-4" href="https://folio-pdf-toolkit.vercel.app">
+          Folio
+        </a>{" "}
+        merges, splits and compresses PDFs in the browser. Different name, different job. Invoice
+        is Nota, not Folio.
+      </p>
+    </Page>
   );
 }
