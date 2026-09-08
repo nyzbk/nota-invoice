@@ -17,7 +17,7 @@ export const Route = createFileRoute("/terms")({
 
 function TermsPage() {
   return (
-    <Page title="Terms of Service" lede="Last updated: 28 August 2026">
+    <Page title="Terms of Service" lede="Last updated: 8 September 2026">
       <p>By using Nota you agree to these Terms and the Privacy Policy.</p>
       <p>
         The generator is provided “as is”. You are responsible for whether an invoice meets the
@@ -39,7 +39,19 @@ function TermsPage() {
         operator. Folio is a different product; do not treat this site as Folio.
       </p>
       <p>
-        Questions:{" "}
+        Nota is not an accounting firm, not a tax agent, and not a substitute for the invoice your
+        country requires you to keep. If a mapped total is wrong, you fix the fields before anyone
+        pays. If you are not allowed to bill a client — someone else’s trading name, a template
+        you should not have — do not type it here.
+      </p>
+      <p>
+        We may show Google ads after Site Ready. Ads are not advice. Do not click them. Do not
+        ask other people to click them. Invalid traffic is an AdSense program-policy violation
+        (help 48182) and it burns the whole account, not one site.
+      </p>
+      <p>
+        The sample names you type to test a layout are yours. Do not treat a dummy PDF as evidence
+        of a real sale. Last updated 8 September 2026. Contact without attachments:{" "}
         <a className="underline underline-offset-4" href={`mailto:${CONTACT_EMAIL}`}>
           {CONTACT_EMAIL}
         </a>
