@@ -57,4 +57,16 @@ export const invoiceFaq: FaqItem[] = [
     q: "What if Download PDF does nothing?",
     a: "Add a From name, a Bill-to name and at least one line with a numeric price. Empty price fields are ignored. If a logo was huge or not PNG/JPEG, remove it and try again. Very long notes are clipped on a single A4 page.",
   },
+  {
+    q: "Why is tax after discount?",
+    a: "Because the total formula is subtotal − discount + tax. A line-item VAT-before-discount workflow belongs in an accounting suite with tax codes. Nota is a one-page A4 for people who already know the numbers. See /tax for the worked example. Do not invent a 0.01 line to game the order.",
+  },
+  {
+    q: "Will you store my client list if I leave the tab open?",
+    a: "A draft may sit in this browser’s localStorage until Start over or until you clear site data. Another phone does not see it. We do not have a server copy to restore. Treat Download PDF as save. Do not type secrets you would not want in ordinary browser storage.",
+  },
+  {
+    q: "Can I attach a scanned contract instead of a logo?",
+    a: "No. The logo slot accepts PNG/JPEG only, checked by magic bytes. A PDF, HEIC or GIF is refused. The invoice body is drawn as text. If you need to merge a signed scan, that is Folio on a different domain, after you already have the invoice PDF.",
+  },
 ];
