@@ -110,6 +110,24 @@ function HowToPage() {
         library actually does, steps, failure modes, and what happens when the tab closes.
       </p>
       <p>
+        The numbers on this page are integer cents, not a float that prints 114.999. Discount is
+        a flat amount taken off the subtotal before tax; tax is a percent of what remains. If
+        your contract wants tax on the pre-discount figure, this generator is the wrong tool — do
+        not “fix” it by typing a fake 0.01 line. The <a href="/tax">tax page</a> walks one worked
+        example. IBAN, Kaspi and PayPal notes stay selectable text because pdf-lib writes glyphs,
+        not a screenshot of the preview. A logo is optional, PNG or JPEG, magic-bytes checked, 2
+        MB cap; GIF, SVG and PDF-as-logo are refused so a renamed scan cannot sneak in. Cyrillic
+        legal names subset into Noto. Empty From or Bill-to blocks download on purpose: a blank
+        sender is both a bad invoice and a thin page.
+      </p>
+      <p>
+        After Download PDF, send the file yourself. Nota does not email clients, does not run
+        dunning, and does not keep recurring profiles. Those products upload. This one does not.
+        If you close the tab before you download, we have nothing to restore. Treat the button as
+        save. A draft in this browser’s local storage is a convenience on the same phone, not a
+        cloud archive.
+      </p>
+      <p>
         Next: <a href="/fields">fields that belong on the page</a>,{" "}
         <a href="/iphone">iPhone Safari</a>, <a href="/faq">FAQ</a>, or go back to the{" "}
         <a href="/">generator</a>.
