@@ -55,6 +55,14 @@ function TaxPage() {
         accountant’s job. Nota will happily print 0% if you leave Tax blank.
       </p>
       <p>
+        Worked order is always subtotal, then flat discount, then tax percent of what remains.
+        Changing the percent does not change the order. A “price includes VAT” workflow belongs in
+        software with tax codes per line. Do not split one service into two rows just to fake a
+        different order — the sheet will still add the same way, and the PDF will look like two
+        jobs. Currency is a label plus integer minor units. KZT prints as letters plus the number
+        so a missing tenge glyph cannot blank the total.
+      </p>
+      <p>
         Back to the <a href="/">form</a> or the <a href="/fields">field list</a>.
       </p>
     </Page>

@@ -49,6 +49,14 @@ function IphonePage() {
         binary. That keeps invoice bytes off a vendor’s upload API.
       </p>
       <p>
+        iOS Safari can run pdf-lib and save through the browser download sheet. Stay in the tab
+        while the file builds. A popup blocker or an IT profile can swallow the blob; tap Download
+        PDF again or share from the sheet. Huge JPEG logos starve an old phone — compress below 2
+        MB or skip the logo. localStorage on iPhone is this Safari profile, not iCloud of every
+        device. Clearing website data drops the draft. We cannot push the PDF into Files.app for
+        you; that is the share sheet after download.
+      </p>
+      <p>
         More context: <a href="/how-to">how-to</a>, <a href="/faq">FAQ</a>.
       </p>
     </Page>

@@ -61,6 +61,15 @@ function FieldsPage() {
         <a href="/contact">contact</a> and use their template.
       </p>
       <p>
+        From, Bill to, invoice number, issue date, due date, currency, lines, discount, tax,
+        notes, optional logo — that is the set. Nota will not invent a VAT registration field that
+        your country requires if you did not type it into Notes. Put the legal lines you need in
+        From or Notes as text. Do not expect a hidden “compliance pack” behind a toggle. The PDF
+        is one A4. Long notes clip. Extra line items that do not fit above the totals block are
+        omitted with a note rather than spilling onto page two. If you need a multi-page statement
+        of work, write that elsewhere and attach both files in your own mail.
+      </p>
+      <p>
         Start filling on the <a href="/">invoice form</a>.
       </p>
     </Page>
