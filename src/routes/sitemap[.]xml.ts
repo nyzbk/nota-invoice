@@ -13,13 +13,14 @@ const LASTMOD: Record<string, string> = {
   "/contact": "2026-09-08",
   "/privacy": "2026-09-08",
   "/terms": "2026-09-08",
+  "/llms.txt": "2026-09-11",
 };
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${SITEMAP_PATHS.map((path) => {
+        const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...SITEMAP_PATHS, "/llms.txt"].map((path) => {
   const lastmod = LASTMOD[path];
   const lastmodLine = lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : "";
   return `  <url>\n    <loc>${SITE_ORIGIN}${path === "/" ? "" : path}</loc>${lastmodLine}\n    <changefreq>weekly</changefreq>\n  </url>`;

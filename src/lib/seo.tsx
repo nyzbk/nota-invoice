@@ -17,6 +17,7 @@ export function jsonLdScripts(opts: {
     url,
     applicationCategory: "BusinessApplication",
     operatingSystem: "Any",
+    isAccessibleForFree: true,
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     description: opts.description,
     featureList: ["Create invoice", "Download PDF", "No signup", "No watermark", "Client-side PDF"],
@@ -41,7 +42,16 @@ export function jsonLdScripts(opts: {
       text,
     })),
   };
+  const website = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Nota",
+    url: SITE_ORIGIN,
+    inLanguage: "en",
+    publisher: { "@type": "Organization", name: "Ultimatum", email: "ultaultimatum@gmail.com", url: SITE_ORIGIN },
+  };
   return [
+    { type: "application/ld+json", children: JSON.stringify(website) },
     { type: "application/ld+json", children: JSON.stringify(app) },
     { type: "application/ld+json", children: JSON.stringify(faq) },
     { type: "application/ld+json", children: JSON.stringify(howTo) },
@@ -74,6 +84,12 @@ export function toolHead(opts: {
       { title: opts.title },
       { name: "description", content: opts.description },
       { name: "robots", content: "index, follow, max-image-preview:large" },
+      { property: "og:title", content: opts.title },
+      { property: "og:description", content: opts.description },
+      { property: "og:url", content: canonical },
+      { property: "og:image", content: `${SITE_ORIGIN}/og.jpg` },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: `${SITE_ORIGIN}/og.jpg` },
     ],
     links: [{ rel: "canonical", href: canonical }],
     scripts,

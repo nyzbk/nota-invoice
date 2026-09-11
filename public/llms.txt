@@ -1,0 +1,36 @@
+# Nota
+
+> Create a professional invoice PDF in the browser. No upload, no signup, no watermark.
+
+The public origin is https://nota-invoice-mu.vercel.app. Operated by Ultimatum. Contact ultaultimatum@gmail.com.
+
+## Tools
+
+* [Invoice](https://nota-invoice-mu.vercel.app) — Fill, download PDF.
+* [Estimate](https://nota-invoice-mu.vercel.app/estimate) — Same fields, estimate stamp.
+
+## Guides
+
+* [How it works](https://nota-invoice-mu.vercel.app/how-to) — Client-side PDF.
+* [Invoice fields](https://nota-invoice-mu.vercel.app/fields) — What each line is.
+* [Tax & discount](https://nota-invoice-mu.vercel.app/tax) — Math in the tab.
+* [iPhone](https://nota-invoice-mu.vercel.app/iphone) — Files holds the PDF.
+* [Use cases](https://nota-invoice-mu.vercel.app/use-cases) — Freelancer, shop.
+* [FAQ](https://nota-invoice-mu.vercel.app/faq) — Privacy.
+
+## Site pages
+
+* [About](https://nota-invoice-mu.vercel.app/about) — Operator and what this tool refuses to be.
+* [Contact](https://nota-invoice-mu.vercel.app/contact) — ultaultimatum@gmail.com
+* [Privacy](https://nota-invoice-mu.vercel.app/privacy) — Bytes stay in the tab.
+* [Terms](https://nota-invoice-mu.vercel.app/terms) — Not a studio, not a host.
+* [FAQ](https://nota-invoice-mu.vercel.app/faq) — Short answers.
+
+## Site
+
+* [Sitemap](https://nota-invoice-mu.vercel.app/sitemap.xml)
+* [llms.txt](https://nota-invoice-mu.vercel.app/llms.txt) — This file.
+
+## Not on this origin
+
+* Bytes stay in the tab. There is no conversion API and no `/blogs/` cluster.
