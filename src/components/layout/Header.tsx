@@ -10,6 +10,9 @@ export function Header() {
           <a href="/" className="text-ink no-underline hover:underline">
             Invoice
           </a>
+          <a href="/estimate" className="text-muted no-underline hover:text-ink hover:underline">
+            Estimate
+          </a>
           <a href="/how-to" className="text-muted no-underline hover:text-ink hover:underline">
             How it works
           </a>

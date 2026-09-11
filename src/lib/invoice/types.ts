@@ -68,6 +68,25 @@ export function defaultInvoice(): Invoice {
   };
 }
 
+
+export function defaultEstimate(): Invoice {
+  const issue = isoDate();
+  const stamp = issue.replace(/-/g, "");
+  return {
+    number: `EST-${stamp}-001`,
+    issueDate: issue,
+    dueDate: addDays(issue, 30),
+    currency: "USD",
+    from: { name: "", email: "", address: "" },
+    to: { name: "", email: "", address: "" },
+    items: [{ id: "item-1", description: "", qty: "1", unitPrice: "" }],
+    discount: "",
+    taxPercent: "",
+    notes:
+      "This estimate is not a tax invoice and not a demand for payment. It is valid until the date shown.",
+  };
+}
+
 export function currencyOf(id: CurrencyId) {
   return CURRENCIES.find((c) => c.id === id) ?? CURRENCIES[0];
 }

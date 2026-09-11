@@ -7,6 +7,15 @@ export function Footer() {
     <footer className="mt-16 border-t border-line bg-surface/60">
       <div className="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-10">
         <SoftAgencyCta />
+        <p className="text-center text-sm">
+          <a
+            href="https://ultimatum-hub.vercel.app/"
+            className="text-ink underline decoration-line underline-offset-4 hover:decoration-copper"
+            rel="noopener noreferrer"
+          >
+            Ultimatum hub
+          </a>
+        </p>
         <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm">
           {NAV.map((item) => (
             <a

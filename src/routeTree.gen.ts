@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as EstimateRouteImport } from './routes/estimate'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FieldsRouteImport } from './routes/fields'
 import { Route as HowToRouteImport } from './routes/how-to'
@@ -35,6 +36,11 @@ const AboutRoute = AboutRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EstimateRoute = EstimateRouteImport.update({
+  id: '/estimate',
+  path: '/estimate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/estimate': typeof EstimateRoute
   '/faq': typeof FaqRoute
   '/fields': typeof FieldsRoute
   '/how-to': typeof HowToRoute
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/estimate': typeof EstimateRoute
   '/faq': typeof FaqRoute
   '/fields': typeof FieldsRoute
   '/how-to': typeof HowToRoute
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/estimate': typeof EstimateRoute
   '/faq': typeof FaqRoute
   '/fields': typeof FieldsRoute
   '/how-to': typeof HowToRoute
@@ -132,6 +141,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/estimate'
     | '/faq'
     | '/fields'
     | '/how-to'
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/estimate'
     | '/faq'
     | '/fields'
     | '/how-to'
@@ -160,6 +171,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/estimate'
     | '/faq'
     | '/fields'
     | '/how-to'
@@ -175,6 +187,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  EstimateRoute: typeof EstimateRoute
   FaqRoute: typeof FaqRoute
   FieldsRoute: typeof FieldsRoute
   HowToRoute: typeof HowToRoute
@@ -207,6 +220,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/estimate': {
+      id: '/estimate'
+      path: '/estimate'
+      fullPath: '/estimate'
+      preLoaderRoute: typeof EstimateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -279,6 +299,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  EstimateRoute: EstimateRoute,
   FaqRoute: FaqRoute,
   FieldsRoute: FieldsRoute,
   HowToRoute: HowToRoute,

@@ -4,6 +4,7 @@ export const APP_NAME = "Nota";
 
 export const NAV = [
   { href: "/", label: "Invoice" },
+  { href: "/estimate", label: "Estimate" },
   { href: "/how-to", label: "How it works" },
   { href: "/faq", label: "FAQ" },
   { href: "/use-cases", label: "Use cases" },

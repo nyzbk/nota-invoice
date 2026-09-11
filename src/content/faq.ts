@@ -69,4 +69,12 @@ export const invoiceFaq: FaqItem[] = [
     q: "Can I attach a scanned contract instead of a logo?",
     a: "No. The logo slot accepts PNG/JPEG only, checked by magic bytes. A PDF, HEIC or GIF is refused. The invoice body is drawn as text. If you need to merge a signed scan, that is Folio on a different domain, after you already have the invoice PDF.",
   },
+  {
+    q: "Is an estimate the same as an invoice?",
+    a: "No. The /estimate page prints ESTIMATE, a Valid-until date, and a footer that the PDF is not a tax invoice. The home page prints INVOICE and Due. Both use integer-cent totals. Do not send an estimate to a tax office as a VAT invoice. If the client accepts, issue INV- on the invoice generator.",
+  },
+  {
+    q: "Why does the estimate use the same dueDate field?",
+    a: "One data shape so math.ts stays locked. The estimate screen labels that field Valid until and defaultEstimate() sets +30 days. defaultInvoice() still uses INV- and +14. Drafts live in nota-estimate-draft-v1, not the invoice key, so a bill does not open as an offer.",
+  },
 ];

@@ -3,6 +3,8 @@ import fontkit from "@pdf-lib/fontkit";
 import { currencyOf, type Invoice } from "./types";
 import { lineCents, parseMoney, pdfMoney, totals } from "./math";
 
+export type PdfKind = "invoice" | "estimate";
+
 const PAGE_W = 595.28;
 const PAGE_H = 841.89;
 const MARGIN = 48;
@@ -57,7 +59,11 @@ async function loadUiFonts() {
   return fontCache;
 }
 
-export async function buildInvoicePdf(invoice: Invoice, logoBytes?: ArrayBuffer | null) {
+export async function buildInvoicePdf(
+  invoice: Invoice,
+  logoBytes?: ArrayBuffer | null,
+  kind: PdfKind = "invoice",
+) {
   const doc = await PDFDocument.create();
   doc.registerFontkit(fontkit);
   const page = doc.addPage([PAGE_W, PAGE_H]);
@@ -82,7 +88,8 @@ export async function buildInvoicePdf(invoice: Invoice, logoBytes?: ArrayBuffer 
     page.drawText(text, { x, y: yy, size, font: useBold ? bold : font, color: INK });
   };
 
-  page.drawText("INVOICE", { x: MARGIN, y: y - 8, size: 22, font: bold, color: INK });
+  const title = kind === "estimate" ? "ESTIMATE" : "INVOICE";
+  page.drawText(title, { x: MARGIN, y: y - 8, size: 22, font: bold, color: INK });
   const number = invoice.number || "—";
   const numSize = 12;
   const numW = bold.widthOfTextAtSize(number, numSize);
@@ -110,14 +117,21 @@ export async function buildInvoicePdf(invoice: Invoice, logoBytes?: ArrayBuffer 
   }
 
   draw(`Issue ${invoice.issueDate || "—"}`, MARGIN, y, 9);
-  draw(`Due ${invoice.dueDate || "—"}`, MARGIN + 160, y, 9);
+  draw(
+    kind === "estimate"
+      ? `Valid until ${invoice.dueDate || "—"}`
+      : `Due ${invoice.dueDate || "—"}`,
+    MARGIN + 160,
+    y,
+    9,
+  );
   y -= 28;
   page.drawLine({ start: { x: MARGIN, y }, end: { x: PAGE_W - MARGIN, y }, thickness: 0.8, color: LINE });
   y -= 20;
 
   const yStart = y;
   page.drawText("From", { x: MARGIN, y, size: 8, font: bold, color: INK });
-  page.drawText("Bill to", { x: 310, y, size: 8, font: bold, color: INK });
+  page.drawText(kind === "estimate" ? "Prepared for" : "Bill to", { x: 310, y, size: 8, font: bold, color: INK });
   y -= 14;
   let yLeft = y;
   let yRight = y;
@@ -191,13 +205,34 @@ export async function buildInvoicePdf(invoice: Invoice, logoBytes?: ArrayBuffer 
       });
   }
 
-  page.drawText("Created with Nota", { x: MARGIN, y: 36, size: 8, font, color: MUTED });
+  page.drawText(
+    kind === "estimate" ? "Estimate — not a tax invoice. Created with Nota" : "Created with Nota",
+    { x: MARGIN, y: 36, size: 8, font, color: MUTED },
+  );
+  if (kind === "estimate") {
+    page.drawText("This PDF is not a demand for payment.", {
+      x: MARGIN,
+      y: 24,
+      size: 7,
+      font,
+      color: MUTED,
+    });
+  }
   return doc.save();
 }
 
 export function validateInvoice(invoice: Invoice): string | null {
   if (!invoice.from.name.trim()) return "Add your name in From.";
   if (!invoice.to.name.trim()) return "Add who you are billing.";
+  const usable = invoice.items.filter((i) => i.description.trim() && i.unitPrice.trim() !== "" && Number.isFinite(Number(i.unitPrice)));
+  if (!usable.length) return "Add at least one line item with a price.";
+  return null;
+}
+
+
+export function validateEstimate(invoice: Invoice): string | null {
+  if (!invoice.from.name.trim()) return "Add your name in From.";
+  if (!invoice.to.name.trim()) return "Add who this estimate is for.";
   const usable = invoice.items.filter((i) => i.description.trim() && i.unitPrice.trim() !== "" && Number.isFinite(Number(i.unitPrice)));
   if (!usable.length) return "Add at least one line item with a price.";
   return null;

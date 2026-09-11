@@ -4,6 +4,7 @@ import { SITE_ORIGIN, SITEMAP_PATHS } from "@/content/site";
 /** lastmod only on URLs this Gate C pass actually changed. Home kept at prior content date. */
 const LASTMOD: Record<string, string> = {
   "/": "2026-08-28",
+  "/estimate": "2026-09-10",
   "/how-to": "2026-09-08",
   "/faq": "2026-09-08",
   "/fields": "2026-09-08",

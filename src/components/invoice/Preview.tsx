@@ -1,7 +1,13 @@
 import { currencyOf, type Invoice } from "@/lib/invoice/types";
 import { formatCents, lineCents, totals } from "@/lib/invoice/math";
 
-export function Preview({ invoice }: { invoice: Invoice }) {
+export function Preview({
+  invoice,
+  kind = "invoice",
+}: {
+  invoice: Invoice;
+  kind?: "invoice" | "estimate";
+}) {
   const { symbol } = currencyOf(invoice.currency);
   const t = totals(invoice);
   const money = (c: number) => formatCents(c, symbol);
@@ -10,11 +16,14 @@ export function Preview({ invoice }: { invoice: Invoice }) {
   return (
     <article className="rounded-xl border border-line bg-surface p-5 shadow-soft sm:p-7">
       <div className="flex items-start justify-between gap-4">
-        <p className="font-display text-2xl font-medium tracking-tight">Invoice</p>
+        <p className="font-display text-2xl font-medium tracking-tight">
+          {kind === "estimate" ? "Estimate" : "Invoice"}
+        </p>
         <p className="text-right text-sm font-medium text-copper">{invoice.number || "—"}</p>
       </div>
       <p className="mt-2 text-xs text-muted">
-        Issue {invoice.issueDate || "—"} · Due {invoice.dueDate || "—"}
+        Issue {invoice.issueDate || "—"} ·{" "}
+        {kind === "estimate" ? "Valid until" : "Due"} {invoice.dueDate || "—"}
       </p>
       <div className="mt-6 grid gap-6 sm:grid-cols-2">
         <div>
@@ -24,7 +33,9 @@ export function Preview({ invoice }: { invoice: Invoice }) {
           {invoice.from.address ? <p className="whitespace-pre-line text-sm text-muted">{invoice.from.address}</p> : null}
         </div>
         <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-subtle">Bill to</p>
+          <p className="text-xs font-medium uppercase tracking-wide text-subtle">
+            {kind === "estimate" ? "Prepared for" : "Bill to"}
+          </p>
           <p className="mt-1 text-sm font-medium">{invoice.to.name || "Client name"}</p>
           {invoice.to.email ? <p className="text-sm text-muted">{invoice.to.email}</p> : null}
           {invoice.to.address ? <p className="whitespace-pre-line text-sm text-muted">{invoice.to.address}</p> : null}

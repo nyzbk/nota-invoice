@@ -1,32 +1,54 @@
-import { defaultInvoice, type Invoice } from "./types";
+import { defaultEstimate, defaultInvoice, type Invoice } from "./types";
 
-const KEY = "nota-invoice-draft-v1";
+const INVOICE_KEY = "nota-invoice-draft-v1";
+const ESTIMATE_KEY = "nota-estimate-draft-v1";
 
-export function loadDraft(): Invoice | null {
+function read(key: string, fallback: () => Invoice): Invoice | null {
   if (typeof window === "undefined") return null;
   try {
-    const raw = localStorage.getItem(KEY);
+    const raw = localStorage.getItem(key);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as Invoice;
     if (!parsed || !parsed.from || !Array.isArray(parsed.items)) return null;
-    return { ...defaultInvoice(), ...parsed, items: parsed.items.length ? parsed.items : defaultInvoice().items };
+    const base = fallback();
+    return { ...base, ...parsed, items: parsed.items.length ? parsed.items : base.items };
   } catch {
     return null;
   }
 }
 
-export function saveDraft(invoice: Invoice) {
+function write(key: string, invoice: Invoice) {
   try {
-    localStorage.setItem(KEY, JSON.stringify(invoice));
+    localStorage.setItem(key, JSON.stringify(invoice));
   } catch {
     /* quota / private mode */
   }
 }
 
-export function clearDraft() {
+function remove(key: string) {
   try {
-    localStorage.removeItem(KEY);
+    localStorage.removeItem(key);
   } catch {
     /* ignore */
   }
+}
+
+export function loadDraft(): Invoice | null {
+  return read(INVOICE_KEY, defaultInvoice);
+}
+export function saveDraft(invoice: Invoice) {
+  write(INVOICE_KEY, invoice);
+}
+export function clearDraft() {
+  remove(INVOICE_KEY);
+}
+
+export function loadEstimateDraft(): Invoice | null {
+  return read(ESTIMATE_KEY, defaultEstimate);
+}
+export function saveEstimateDraft(invoice: Invoice) {
+  write(ESTIMATE_KEY, invoice);
+}
+export function clearEstimateDraft() {
+  remove(ESTIMATE_KEY);
 }
