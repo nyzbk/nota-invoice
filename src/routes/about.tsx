@@ -1,17 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Page } from "@/components/site/Page";
 import { CONTACT_EMAIL } from "@/content/site";
-import { toolHead } from "@/lib/seo";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
-  head: () =>
-    toolHead({
-      title: "About Nota — local-first invoice PDF",
-      description:
-        "Nota is a browser invoice generator: A4 PDF, integer-cent math, Noto Sans for Latin and Cyrillic. No accounts, no cloud invoice store, no watermark.",
-      path: "/about",
-      appName: "Nota",
-    }),
+  head: () => pageHead("/about"),
   component: AboutPage,
 });
 

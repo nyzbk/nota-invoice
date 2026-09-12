@@ -1,8 +1,12 @@
 User-agent: *
 Allow: /
+Disallow: /login
+Disallow: /api/auth
 
 User-agent: Googlebot
 Allow: /
+Disallow: /login
+Disallow: /api/auth
 
 User-agent: Mediapartners-Google
 Allow: /
@@ -12,6 +16,8 @@ Allow: /
 
 User-agent: Yandex
 Allow: /
+Disallow: /login
+Disallow: /api/auth
 
 User-agent: Google-Extended
 Allow: /
@@ -38,3 +44,5 @@ User-agent: PerplexityBot
 Allow: /
 
 Sitemap: https://nota-invoice-mu.vercel.app/sitemap.xml
+# AEO: https://nota-invoice-mu.vercel.app/llms.txt
+# AEO: https://nota-invoice-mu.vercel.app/llms-full.txt

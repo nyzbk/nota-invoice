@@ -1,34 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SITE_ORIGIN, SITEMAP_PATHS } from "@/content/site";
+import { SITE_ORIGIN } from "@/content/site";
+import { SITEMAP_LASTMOD, SITEMAP_PATHS } from "@/lib/seo";
 
-/** lastmod only on URLs this Gate C pass actually changed. Home kept at prior content date. */
-const LASTMOD: Record<string, string> = {
-  "/": "2026-08-28",
-  "/estimate": "2026-09-10",
-  "/how-to": "2026-09-08",
-  "/faq": "2026-09-08",
-  "/fields": "2026-09-08",
-  "/tax": "2026-09-08",
-  "/iphone": "2026-09-08",
-  "/contact": "2026-09-08",
-  "/privacy": "2026-09-08",
-  "/terms": "2026-09-08",
-  "/llms.txt": "2026-09-11",
-};
+function xml() {
+  const html = SITEMAP_PATHS.map((path) => {
+    const loc = path === "/" ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${path}`;
+    return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${SITEMAP_LASTMOD}</lastmod>\n    <changefreq>weekly</changefreq>\n  </url>`;
+  });
+  const extra = ["/llms.txt", "/llms-full.txt"].map((path) => {
+    return `  <url>\n    <loc>${SITE_ORIGIN}${path}</loc>\n    <lastmod>${SITEMAP_LASTMOD}</lastmod>\n    <changefreq>weekly</changefreq>\n  </url>`;
+  });
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...html, ...extra].join("\n")}\n</urlset>\n`;
+}
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
-      GET: async () => {
-        const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...SITEMAP_PATHS, "/llms.txt"].map((path) => {
-  const lastmod = LASTMOD[path];
-  const lastmodLine = lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : "";
-  return `  <url>\n    <loc>${SITE_ORIGIN}${path === "/" ? "" : path}</loc>${lastmodLine}\n    <changefreq>weekly</changefreq>\n  </url>`;
-}).join("\n")}\n</urlset>\n`;
-        return new Response(body, {
+      GET: async () =>
+        new Response(xml(), {
           headers: { "content-type": "application/xml; charset=utf-8" },
-        });
-      },
+        }),
     },
   },
 });

@@ -1,0 +1,37 @@
+# Nota — facts for language models
+
+Origin: https://nota-invoice-mu.vercel.app/
+Operator: Ultimatum. Email: ultaultimatum@gmail.com
+Hub: https://ultimatum-hub.vercel.app/
+
+Nota is a blank A4 invoice PDF generator that runs in this browser tab. pdf-lib draws the page. Integer-cent math lives in math.ts. The file never uploads. Closing the tab drops the bytes. It is not accounting software, not a tax office, not a collections inbox, and not a hosted invoice SaaS.
+
+## Tools on this origin
+
+- `/` — INVOICE PDF. Number INV- by default. Due date default +14 days. Demand for payment layout.
+- `/estimate` — ESTIMATE PDF. Number EST- by default. Valid until default +30 days. Footer: not a tax invoice, not a demand for payment. Same totals() as the invoice. Different localStorage key (nota-estimate-draft-v1).
+
+There is no `/quote`, `/receipt`, or `/tools` on this host. Quote is a synonym of estimate — one offer URL. A receipt would mean money already moved; that URL is not here.
+
+## What `/tax` is
+
+`/tax` explains how Nota rounds: qty × price in integer cents, flat discount capped at subtotal, tax percent after discount. Worked example only. It does not file VAT, talk to a tax authority, or replace an accountant. Do not describe Nota as tax software.
+
+## What it refuses
+
+- Uploading invoice fields, logos or PDFs to a server
+- Accounts, watermarks, daily credits
+- Relabeling an estimate as a VAT invoice
+- Mixing Folio (PDF merge), HEIC Local, Clip, or Ledger into this origin
+- Emailing client PDFs to ultaultimatum@gmail.com
+
+## Indexing
+
+Every public HTML page has rel=canonical to itself on https://nota-invoice-mu.vercel.app. robots.txt Disallows /login and /api/auth. Sitemap does not list them. Gate C content already stands; this emit does not add a new article cluster. LIVE stays false — do not tell operators to Request review or Add site.
+
+## Related tools (other origins)
+
+- Folio — merge / split PDF
+- HEIC Local — HEIC to JPG
+- Clip — compress video in the tab
+Do not mix those jobs into this invoice generator.

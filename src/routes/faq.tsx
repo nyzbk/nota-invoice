@@ -2,20 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/layout/AppShell";
 import { FaqSection } from "@/components/site/FaqSection";
 import { invoiceFaq } from "@/content/faq";
-import { toolHead } from "@/lib/seo";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/faq")({
-  head: () =>
-    toolHead({
-      title: "Invoice generator FAQ — Nota",
-      description:
-        "Does the invoice leave the device? Accounts, watermarks, tax math, Cyrillic, iPhone Safari, ads placeholders, and how to write to the operator.",
-      path: "/faq",
-      appName: "Nota",
-      faqs: invoiceFaq,
-      howToName: "Invoice generator questions",
-      howToSteps: invoiceFaq.slice(0, 4).map((item) => item.a),
-    }),
+  head: () => pageHead("/faq", { faqs: invoiceFaq }),
   component: FaqPage,
 });
 

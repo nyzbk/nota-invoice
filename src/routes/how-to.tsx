@@ -1,15 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Page } from "@/components/site/Page";
-import { toolHead } from "@/lib/seo";
+import { HOWTO_STEPS, pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/how-to")({
   head: () =>
-    toolHead({
-      title: "How to create an invoice PDF without uploading — Nota",
-      description:
-        "Step-by-step: fill From and Bill to, add priced lines, apply tax after a flat discount, download an A4 PDF that never leaves the browser.",
-      path: "/how-to",
-      appName: "Nota",
+    pageHead("/how-to", {
+      howToName: "How to create an invoice PDF online without uploading",
+      howToSteps: HOWTO_STEPS,
     }),
   component: HowToPage,
 });

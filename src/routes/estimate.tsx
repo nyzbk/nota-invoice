@@ -2,19 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { EstimateApp } from "@/components/invoice/EstimateApp";
 import { AppShell } from "@/components/layout/AppShell";
 import { EstimateCopy } from "@/content/estimate-copy";
-import { toolHead } from "@/lib/seo";
-
-const TITLE = "Free Estimate PDF — Not a Tax Invoice | Nota";
-const DESC =
-  "Write an estimate PDF in the browser. ESTIMATE title, EST- number, Valid until. Same cent math as Nota invoices. Not a tax invoice, no upload.";
+import { estimateFaq } from "@/content/faq";
+import { ESTIMATE_HOWTO_STEPS, pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/estimate")({
   head: () =>
-    toolHead({
-      title: TITLE,
-      description: DESC,
-      path: "/estimate",
-      appName: "Nota",
+    pageHead("/estimate", {
+      faqs: estimateFaq,
+      howToName: "How to write an estimate PDF that is not a tax invoice",
+      howToSteps: ESTIMATE_HOWTO_STEPS,
     }),
   component: EstimatePage,
 });

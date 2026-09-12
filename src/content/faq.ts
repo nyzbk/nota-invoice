@@ -78,3 +78,7 @@ export const invoiceFaq: FaqItem[] = [
     a: "One data shape so math.ts stays locked. The estimate screen labels that field Valid until and defaultEstimate() sets +30 days. defaultInvoice() still uses INV- and +14. Drafts live in nota-estimate-draft-v1, not the invoice key, so a bill does not open as an offer.",
   },
 ];
+
+/** Home JSON-LD slice — invoice facts only, not the estimate pair. */
+export const homeFaq = invoiceFaq.slice(0, 6);
+export const estimateFaq = invoiceFaq.slice(-2);

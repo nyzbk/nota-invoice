@@ -1,16 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Page } from "@/components/site/Page";
-import { toolHead } from "@/lib/seo";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/use-cases")({
-  head: () =>
-    toolHead({
-      title: "Who uses a browser invoice PDF — Nota",
-      description:
-        "Freelance designers, contractors billing in tenge, iPhone-only trades, agencies, and anyone who needs one A4 invoice today without a SaaS account.",
-      path: "/use-cases",
-      appName: "Nota",
-    }),
+  head: () => pageHead("/use-cases"),
   component: UseCasesPage,
 });
 

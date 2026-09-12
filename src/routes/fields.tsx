@@ -1,16 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Page } from "@/components/site/Page";
-import { toolHead } from "@/lib/seo";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/fields")({
-  head: () =>
-    toolHead({
-      title: "What belongs on an invoice — Nota field list",
-      description:
-        "Sender, buyer, unique number, issue and due dates, line items, discount, tax, notes. What Nota prints, and what you must still add for your country.",
-      path: "/fields",
-      appName: "Nota",
-    }),
+  head: () => pageHead("/fields"),
   component: FieldsPage,
 });
 

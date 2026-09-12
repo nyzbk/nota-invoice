@@ -1,17 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Page } from "@/components/site/Page";
 import { CONTACT_EMAIL } from "@/content/site";
-import { toolHead } from "@/lib/seo";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/terms")({
-  head: () =>
-    toolHead({
-      title: "Terms of Service — Nota",
-      description:
-        "Nota is provided as-is. You are responsible for tax and legal fields. No accounts. Do not use the tool for illegal activity.",
-      path: "/terms",
-      appName: "Nota",
-    }),
+  head: () => pageHead("/terms", { legal: true }),
   component: TermsPage,
 });
 

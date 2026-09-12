@@ -1,16 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Page } from "@/components/site/Page";
-import { toolHead } from "@/lib/seo";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/tax")({
-  head: () =>
-    toolHead({
-      title: "Invoice tax and discount math — Nota",
-      description:
-        "Qty × price in integer cents. Flat discount capped at subtotal. Tax percent after discount. Worked example: 2 × 1500 − 100 + 12% = 3248.",
-      path: "/tax",
-      appName: "Nota",
-    }),
+  head: () => pageHead("/tax"),
   component: TaxPage,
 });
 

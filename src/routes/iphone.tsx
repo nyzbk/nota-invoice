@@ -1,15 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Page } from "@/components/site/Page";
-import { toolHead } from "@/lib/seo";
+import { IPHONE_HOWTO_STEPS, pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/iphone")({
   head: () =>
-    toolHead({
-      title: "Create an invoice PDF on iPhone Safari — Nota",
-      description:
-        "Fill the invoice on iOS Safari, download the PDF to Files, no app install. What to do if the download sheet does not appear.",
-      path: "/iphone",
-      appName: "Nota",
+    pageHead("/iphone", {
+      howToName: "Create an invoice PDF on iPhone Safari",
+      howToSteps: IPHONE_HOWTO_STEPS,
     }),
   component: IphonePage,
 });

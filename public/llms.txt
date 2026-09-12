@@ -4,16 +4,18 @@
 
 The public origin is https://nota-invoice-mu.vercel.app. Operated by Ultimatum. Contact ultaultimatum@gmail.com.
 
+Longer facts: https://nota-invoice-mu.vercel.app/llms-full.txt
+
 ## Tools
 
-* [Invoice](https://nota-invoice-mu.vercel.app) — Fill, download PDF.
-* [Estimate](https://nota-invoice-mu.vercel.app/estimate) — Same fields, estimate stamp.
+* [Invoice](https://nota-invoice-mu.vercel.app/) — Fill, download INVOICE PDF.
+* [Estimate](https://nota-invoice-mu.vercel.app/estimate) — ESTIMATE stamp, Valid until, not a tax invoice.
 
 ## Guides
 
 * [How it works](https://nota-invoice-mu.vercel.app/how-to) — Client-side PDF.
 * [Invoice fields](https://nota-invoice-mu.vercel.app/fields) — What each line is.
-* [Tax & discount](https://nota-invoice-mu.vercel.app/tax) — Math in the tab.
+* [Tax & discount](https://nota-invoice-mu.vercel.app/tax) — Math in the tab, not tax software.
 * [iPhone](https://nota-invoice-mu.vercel.app/iphone) — Files holds the PDF.
 * [Use cases](https://nota-invoice-mu.vercel.app/use-cases) — Freelancer, shop.
 * [FAQ](https://nota-invoice-mu.vercel.app/faq) — Privacy.
@@ -24,13 +26,14 @@ The public origin is https://nota-invoice-mu.vercel.app. Operated by Ultimatum. 
 * [Contact](https://nota-invoice-mu.vercel.app/contact) — ultaultimatum@gmail.com
 * [Privacy](https://nota-invoice-mu.vercel.app/privacy) — Bytes stay in the tab.
 * [Terms](https://nota-invoice-mu.vercel.app/terms) — Not a studio, not a host.
-* [FAQ](https://nota-invoice-mu.vercel.app/faq) — Short answers.
 
 ## Site
 
 * [Sitemap](https://nota-invoice-mu.vercel.app/sitemap.xml)
 * [llms.txt](https://nota-invoice-mu.vercel.app/llms.txt) — This file.
+* [llms-full.txt](https://nota-invoice-mu.vercel.app/llms-full.txt) — Facts for language models.
 
 ## Not on this origin
 
 * Bytes stay in the tab. There is no conversion API and no `/blogs/` cluster.
+* No `/quote` `/receipt` `/tools`.

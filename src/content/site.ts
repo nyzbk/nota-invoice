@@ -1,6 +1,8 @@
 export const SITE_ORIGIN = "https://nota-invoice-mu.vercel.app";
 export const CONTACT_EMAIL = "ultaultimatum@gmail.com";
 export const APP_NAME = "Nota";
+export const HUB_URL = "https://ultimatum-hub.vercel.app/";
+export const ADSENSE_CLIENT = "ca-pub-7636435144500691";
 
 export const NAV = [
   { href: "/", label: "Invoice" },

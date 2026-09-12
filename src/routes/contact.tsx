@@ -1,16 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Page } from "@/components/site/Page";
 import { CONTACT_EMAIL } from "@/content/site";
-import { toolHead } from "@/lib/seo";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
-  head: () =>
-    toolHead({
-      title: "Contact Nota — invoice generator support",
-      description: `Email ${CONTACT_EMAIL} about the invoice PDF tool. Include the page URL and browser. Do not attach invoices or logos.`,
-      path: "/contact",
-      appName: "Nota",
-    }),
+  head: () => pageHead("/contact"),
   component: ContactPage,
 });
 

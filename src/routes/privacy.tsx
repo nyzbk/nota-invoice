@@ -1,17 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Page } from "@/components/site/Page";
 import { CONTACT_EMAIL } from "@/content/site";
-import { toolHead } from "@/lib/seo";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/privacy")({
-  head: () =>
-    toolHead({
-      title: "Privacy Policy — Nota invoice generator",
-      description:
-        "Nota builds invoice PDFs in the browser. Invoice fields are not uploaded. Drafts sit in local storage. AdSense cookies only after ads go live.",
-      path: "/privacy",
-      appName: "Nota",
-    }),
+  head: () => pageHead("/privacy", { legal: true }),
   component: PrivacyPage,
 });
 
