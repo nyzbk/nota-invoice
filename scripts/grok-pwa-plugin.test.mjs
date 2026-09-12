@@ -106,10 +106,12 @@ test("platform chrome overwrites share-card metas and always sets og:title", () 
   const out = injectGrokPwaHead(html, { appName: "Wild Race" });
   assert.match(out, /name="twitter:card" content="summary_large_image"/);
   assert.match(out, /property="og:title" content="Hello World"/);
+  assert.match(out, /name="twitter:title" content="Hello World"/);
   assert.doesNotMatch(out, /content="Old"/);
   assert.doesNotMatch(out, /content="summary"/);
   assert.equal(out.split('name="twitter:card"').length - 1, 1);
   assert.equal(out.split('property="og:title"').length - 1, 1);
+  assert.equal(out.split('name="twitter:title"').length - 1, 1);
   assert.doesNotMatch(out, /property="og:image"/);
 });
 
@@ -119,6 +121,24 @@ test("does not duplicate twitter:card or og:title", () => {
   assert.equal(once, twice);
   assert.equal(twice.split('name="twitter:card"').length - 1, 1);
   assert.equal(twice.split('property="og:title"').length - 1, 1);
+  assert.equal(twice.split('name="twitter:title"').length - 1, 1);
+});
+
+test("document title wins over site.json brand stub", () => {
+  const html =
+    "<html><head><title>Free Invoice Generator — Create Invoice PDF, No Signup</title></head></html>";
+  const out = injectGrokPwaHead(html, {
+    site: { title: "Nota — Free Invoice Generator" },
+  });
+  assert.match(
+    out,
+    /property="og:title" content="Free Invoice Generator — Create Invoice PDF, No Signup"/,
+  );
+  assert.match(
+    out,
+    /name="twitter:title" content="Free Invoice Generator — Create Invoice PDF, No Signup"/,
+  );
+  assert.doesNotMatch(out, /property="og:title" content="Nota — Free Invoice Generator"/);
 });
 
 test("baked identity does not need a workspace filesystem", () => {

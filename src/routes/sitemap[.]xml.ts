@@ -7,10 +7,7 @@ function xml() {
     const loc = path === "/" ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${path}`;
     return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${SITEMAP_LASTMOD}</lastmod>\n    <changefreq>weekly</changefreq>\n  </url>`;
   });
-  const extra = ["/llms.txt", "/llms-full.txt"].map((path) => {
-    return `  <url>\n    <loc>${SITE_ORIGIN}${path}</loc>\n    <lastmod>${SITEMAP_LASTMOD}</lastmod>\n    <changefreq>weekly</changefreq>\n  </url>`;
-  });
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...html, ...extra].join("\n")}\n</urlset>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${html.join("\n")}\n</urlset>\n`;
 }
 
 export const Route = createFileRoute("/sitemap.xml")({
